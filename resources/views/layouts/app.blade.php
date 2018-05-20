@@ -43,9 +43,12 @@
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
+                                    <img src="/storage/app/public/avatars/{{ Auth::user()->avatar }}" style="width:30px; height:30px; position:absolute;  left:10px; border-radius:50%">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
