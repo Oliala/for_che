@@ -20,7 +20,7 @@ class PlacesTableSeeder extends Seeder
         ]);
 
         DB::table('places')->insert([
-            'name' => 'Готель "Україна',
+            'name' => 'Готель "Україна"',
             'description' => 'ГОТЕЛЬ “УКРАЇНА" ,проспект Перемоги, 88/33, Чернігів',
             'image' => 'hotelUkraine',
             'popularity' => '',

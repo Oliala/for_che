@@ -46,7 +46,7 @@
                 /*left: 50%;*/
                 /*margin-top: 20px;*/
 
-            }
+            /*}*/
             .content {
                 text-align: center;
             }
@@ -93,7 +93,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ route('places') }}">Варто побачити</a>
+                    <a href="{{ route('place') }}">Варто побачити</a>
                     {{--<a href="https://laracasts.com">Laracasts</a>--}}
                     {{--<a href="https://laravel-news.com">News</a>--}}
                     {{--<a href="https://forge.laravel.com">Forge</a>--}}
