@@ -1,5 +1,7 @@
 <?php
 namespace App\Geocoder;
+use Exception;
+
 /**
  * Represents an Exception that happened while communicating with Mapbox.
  * Includes information about the request that triggered the problem.
