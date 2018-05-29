@@ -24,10 +24,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'UserController@profile')->name('profile');
 Route::post('/profile', 'UserController@update_avatar');
 
-Route::get('/place/{id?}', 'PlacesController@indexHotel');
 Route::post('/place_store/', 'PlacesController@store');
 Route::post('/place/{id}', 'PlacesController@update');
 Route::delete('/place/{id}', 'PlacesController@destroy');
+Route::get('/place', 'PlacesController@show')->name('placeshow');
 
 Route::get('/place/coordinates/{name}', function($name) {
     try {
@@ -39,4 +39,9 @@ Route::get('/place/coordinates/{name}', function($name) {
     }
 });
 
-Route::get('/places', 'PlacesController@show')->name('place');
+Route::get('/places/{id?}', 'PlacesController@place_info')->name('place');
+
+Route::get('/places_all', 'PlacesController@place_show_all')->name('places_all');
+Route::get('/place_index/{id?}', 'PlacesController@place_index')->name('place_index');
+
+Route::post('/create_post', 'PostController@postCreatePost')->name('post.create');

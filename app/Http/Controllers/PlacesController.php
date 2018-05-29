@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Place;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
 
 class PlacesController extends Controller
 {
@@ -13,7 +14,7 @@ class PlacesController extends Controller
      *
      * @return Response
      */
-    public function index($id = null) {
+    public function indexPlace($id = null) {
         if ($id == null) {
             return Place::orderBy('id', 'asc')->get();
         } else {
@@ -64,5 +65,23 @@ class PlacesController extends Controller
         $place->delete();
 
         return "Place record successfully deleted #" . $id;
+    }
+
+    public function place_info($id)
+    {
+
+        return view('place',$this->show($id));
+    }
+    public function place_show_all()
+    {
+        $places = DB::table('places')->get();
+
+        return view('place.place_all', ['places' => $places]);
+    }
+    public function place_index($id)
+    {
+        $places = DB::select('select * from places where id = :id', ['id' => $id]);
+
+        return view('place.place_index', ['places' => $places]);
     }
 }
