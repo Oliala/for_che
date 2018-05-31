@@ -7,4 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Place extends Model
 {
     protected $fillable = array('id', 'name', 'description','image','popularity','category');
+
+    public function posts()
+    {
+        return $this->hasMany('\App\Post');
+
+    }
 }

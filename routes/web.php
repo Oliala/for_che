@@ -43,5 +43,10 @@ Route::get('/places/{id?}', 'PlacesController@place_info')->name('place');
 
 Route::get('/places_all', 'PlacesController@place_show_all')->name('places_all');
 Route::get('/place_index/{id?}', 'PlacesController@place_index')->name('place_index');
+Route::get('/dashboard_places','PlacesController@getDashboard')->name('dashboard');
 
-Route::post('/create_post', 'PostController@postCreatePost')->name('post.create');
+
+
+Route::get('/dashboard','PostController@getDashboard')->name('dashboard')->middleware('auth');
+Route::post('/create_post', 'PostController@postCreatePost')->name('post.create')->middleware('auth');
+Route::get('/delete-post/{post_id}','PostController@getDeletePost')->name('post.delete')->middleware('auth');

@@ -21,4 +21,27 @@
         </form>
     </div>
 </section>
+<section class="row posts">
+    <div class="col-md-6 col-md-offset-3">
+        <header><h3>What do you want to say?</h3></header>
+        @foreach($posts as $post)
+            <article class="post">
+                <p>{{$post->body}}</p>
+                <div class="info">
+            posted by {{$post->user->name }}on {{$post->created_at}}
+                </div>
+                <div class="interaction">
+                    <a href="#">Like</a>
+                    <a href="#">Dislike</a>
+                    @if(Auth::user()==$post->user)
+                        <a href="#" class="edit">Edit</a>
+                        <a href="{{route('post.delete',['post_id'=>$post->id])}}">Delete</a>
+                    @endif
+
+                </div>
+            </article>
+        @endforeach
+    </div>
+</section>
+
 </body>

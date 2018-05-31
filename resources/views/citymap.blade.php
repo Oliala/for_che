@@ -12,7 +12,6 @@
         width: 100%;
     }
 </style>
-@section('content')
 
     <div id='map' ></div>
     {{--$('#map-div').show();--}}
@@ -122,5 +121,3 @@
                 .addTo(map);
         });
     </script>
-@endsection
-

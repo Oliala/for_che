@@ -13,13 +13,28 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+//    public function getDashboard()
+//    {
+//        $posts=Post::all();
+//
+//        return view('place.place_index',['posts'=>$posts]);
+//    }
     public function postCreatePost(Request $request)
     {
-
         $post= new Post();
         $post->title = $request['title'];
         $post->body = $request['body'];
-        $request->user()->posts()->save($post);
-        return redirect()->route('place_index');
+        $message='there was an error';
+       if($request->user()->posts()->save($post)){
+        $message='post succesfully created';
+        }
+        return redirect()->route('place_index')->with(['message'=>$message]);
     }
+    public function getDeletePost($post_id)
+    {
+        $post=Post::where('id',$post_id)->first();
+        $post->delete();
+        return redirect()->route('place.place_index')->with(['message'=>'Succesfully delete']);
+    }
+
 }

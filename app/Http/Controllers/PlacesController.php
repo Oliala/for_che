@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Place;
+use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
@@ -83,5 +84,13 @@ class PlacesController extends Controller
         $places = DB::select('select * from places where id = :id', ['id' => $id]);
 
         return view('place.place_index', ['places' => $places]);
+    }
+
+    public function getDashboard()
+    {
+        $posts=Post::all();
+        $places=Place::all();
+
+        return view('place.place_all',['posts'=>$posts,'places'=>$places]);
     }
 }
