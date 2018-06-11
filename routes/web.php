@@ -39,9 +39,14 @@ Route::get('/place/coordinates/{name}', function($name) {
     }
 });
 
-Route::get('/places/{id?}', 'PlacesController@place_info')->name('place');
 
 Route::get('/places_all', 'PlacesController@place_show_all')->name('places_all');
+
+Route::get('/places_seeings', 'PlacesController@place_seeings')->name('places_seeings');
+Route::get('/places_hotels', 'PlacesController@place_hotels')->name('places_hotels');
+Route::get('/places_food_drinks', 'PlacesController@place_food_drinks')->name('places_food_drinks');
+Route::get('/places_fun', 'PlacesController@place_fun')->name('places_fun');
+
 Route::get('/place_index/{id?}', 'PlacesController@place_index')->name('place_index');
 Route::get('/dashboard_places','PlacesController@getDashboard')->name('dashboard');
 
@@ -50,3 +55,8 @@ Route::get('/dashboard_places','PlacesController@getDashboard')->name('dashboard
 Route::get('/dashboard','PostController@getDashboard')->name('dashboard')->middleware('auth');
 Route::post('/create_post', 'PostController@postCreatePost')->name('post.create')->middleware('auth');
 Route::get('/delete-post/{post_id}','PostController@getDeletePost')->name('post.delete')->middleware('auth');
+
+
+Route::get('/city_map', function () {
+    return view('citymap');
+})->name('city_map');

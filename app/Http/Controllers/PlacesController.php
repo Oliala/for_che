@@ -6,7 +6,6 @@ use App\Place;
 use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use Illuminate\Support\Facades\DB;
 
 class PlacesController extends Controller
 {
@@ -73,17 +72,53 @@ class PlacesController extends Controller
 
         return view('place',$this->show($id));
     }
+
+
+
+
     public function place_show_all()
     {
-        $places = DB::table('places')->get();
+        $places = Place::all();
 
         return view('place.place_all', ['places' => $places]);
     }
+
+    public function place_seeings()
+    {
+        $places=Place::where('category','park')->get();
+
+        return view('place.place_all', ['places' => $places]);
+    }
+
+    public function place_hotels()
+    {
+        $places=Place::where('category','hotel')->get();
+
+        return view('place.place_all', ['places' => $places]);
+    }
+    public function place_food_drinks()
+    {
+        $places=Place::where('category','restaurant')->get();
+
+        return view('place.place_all', ['places' => $places]);
+    }
+
+    public function place_fun()
+    {
+        $places=Place::where('category','park')->get();
+
+        return view('place.place_all', ['places' => $places]);
+    }
+
+
     public function place_index($id)
     {
-        $places = DB::select('select * from places where id = :id', ['id' => $id]);
+        $posts=Post::all();
+       //$places=Place::all();
+        $places=Place::limit(1)->get();
+        //$places = DB::select('select * from places where id = :id', ['id' => $id]);
 
-        return view('place.place_index', ['places' => $places]);
+        return view('place.place_index', ['places' => $places,'posts'=>$posts]);
     }
 
     public function getDashboard()

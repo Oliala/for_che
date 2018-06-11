@@ -8,6 +8,8 @@ class Place extends Model
 {
     protected $fillable = array('id', 'name', 'description','image','popularity','category');
 
+    protected $table = 'places';
+
     public function posts()
     {
         return $this->hasMany('\App\Post');

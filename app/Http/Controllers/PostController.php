@@ -28,7 +28,7 @@ class PostController extends Controller
        if($request->user()->posts()->save($post)){
         $message='post succesfully created';
         }
-        return redirect()->route('place_index')->with(['message'=>$message]);
+        return redirect()->route('place_index')->with(['message'=>$message, 'place'=>$place]);
     }
     public function getDeletePost($post_id)
     {
