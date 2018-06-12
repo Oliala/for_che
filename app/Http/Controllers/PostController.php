@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 use App\Post;
+use App\Place;
 use Illuminate\Http\Request;
 
 
@@ -22,13 +23,17 @@ class PostController extends Controller
     public function postCreatePost(Request $request)
     {
         $post= new Post();
+        $place=new Place();
         $post->title = $request['title'];
         $post->body = $request['body'];
+        //$place->id=$request['place_id'];
         $message='there was an error';
        if($request->user()->posts()->save($post)){
+             if($request->place()->posts()->save($post)){
         $message='post succesfully created';
         }
-        return redirect()->route('place_index')->with(['message'=>$message, 'place'=>$place]);
+       }
+        return redirect()->route('place_index')->with(['message'=>$message,$place->id]);
     }
     public function getDeletePost($post_id)
     {

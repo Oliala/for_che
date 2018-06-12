@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Place extends Model
 {
-    protected $fillable = array('id', 'name', 'description','image','popularity','category');
+    protected $fillable = array('id', 'name', 'description','image','address','phone_number','email','popularity','category');
 
     protected $table = 'places';
 

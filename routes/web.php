@@ -41,7 +41,6 @@ Route::get('/place/coordinates/{name}', function($name) {
 
 
 Route::get('/places_all', 'PlacesController@place_show_all')->name('places_all');
-
 Route::get('/places_seeings', 'PlacesController@place_seeings')->name('places_seeings');
 Route::get('/places_hotels', 'PlacesController@place_hotels')->name('places_hotels');
 Route::get('/places_food_drinks', 'PlacesController@place_food_drinks')->name('places_food_drinks');

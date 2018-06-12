@@ -113,9 +113,10 @@ class PlacesController extends Controller
 
     public function place_index($id)
     {
+        $places=Place::where('id',$id)->get();
         $posts=Post::all();
+
        //$places=Place::all();
-        $places=Place::limit(1)->get();
         //$places = DB::select('select * from places where id = :id', ['id' => $id]);
 
         return view('place.place_index', ['places' => $places,'posts'=>$posts]);

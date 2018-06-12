@@ -23,22 +23,22 @@
                             <a href="{{route('place_index',[$place->id])}}" class="feature-content-link green-btn">button green</a>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="feature-content">
-                            <img  src="/storage/app/public/places/{{ $place->image }}" />
-                            <h2 class="feature-content-title blue-text">{{ $place->name }}</h2>
-                            <p class="feature-content-description">{{ $place->description }}</p>
-                            <a href="{{route('place_index',[$place->id])}}" class="feature-content-link blue-btn">See Details</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="feature-content">
-                            <img  src="/storage/app/public/places/{{ $place->image }}" />
-                            <h2 class="feature-content-title red-text">{{ $place->name }}</h2>
-                            <p class="feature-content-description">{{ $place->description }}</p>
-                            <a href="{{route('place_index',[$place->id])}}" class="feature-content-link red-btn">Button Red</a>
-                        </div>
-                    </div>
+                    {{--<div class="col-sm-4">--}}
+                        {{--<div class="feature-content">--}}
+                            {{--<img  src="/storage/app/public/places/{{ $place->image }}" />--}}
+                            {{--<h2 class="feature-content-title blue-text">{{ $place->name }}</h2>--}}
+                            {{--<p class="feature-content-description">{{ $place->description }}</p>--}}
+                            {{--<a href="{{route('place_index',[$place->id])}}" class="feature-content-link blue-btn">See Details</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-sm-4">--}}
+                        {{--<div class="feature-content">--}}
+                            {{--<img  src="/storage/app/public/places/{{ $place->image }}" />--}}
+                            {{--<h2 class="feature-content-title red-text">{{ $place->name }}</h2>--}}
+                            {{--<p class="feature-content-description">{{ $place->description }}</p>--}}
+                            {{--<a href="{{route('place_index',[$place->id])}}" class="feature-content-link red-btn">Button Red</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                 </div>
             </div>
         </section>
