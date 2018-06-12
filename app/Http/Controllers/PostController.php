@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Place;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class PostController extends Controller
@@ -24,16 +25,17 @@ class PostController extends Controller
     {
         $post= new Post();
         $place=new Place();
+
         $post->title = $request['title'];
         $post->body = $request['body'];
+        $post->place_id = $request['place_id'];
+        $post->user_id = Auth::id();
         //$place->id=$request['place_id'];
         $message='there was an error';
-       if($request->user()->posts()->save($post)){
-             if($request->place()->posts()->save($post)){
-        $message='post succesfully created';
+        if($post->save()){
+            $message='post succesfully created';
         }
-       }
-        return redirect()->route('place_index')->with(['message'=>$message,$place->id]);
+        return redirect()->route('place_index', $post->place_id)->with(['message'=>$message,$place->id]);
     }
     public function getDeletePost($post_id)
     {

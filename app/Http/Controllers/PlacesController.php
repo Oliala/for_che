@@ -113,13 +113,34 @@ class PlacesController extends Controller
 
     public function place_index($id)
     {
-        $places=Place::where('id',$id)->get();
-        $posts=Post::all();
+        $place=Place::find($id);
+        $posts=Post::where('place_id', $id)->get();
+
+//        $places=Place::where('id',$id)->get();
+//        $posts=Post::all();
 
        //$places=Place::all();
         //$places = DB::select('select * from places where id = :id', ['id' => $id]);
 
-        return view('place.place_index', ['places' => $places,'posts'=>$posts]);
+        return view('place.place_index', ['place' => $place,'posts'=>$posts]);
+    }
+
+    public function postPlaceAdd(Request $request)
+    {
+        $place = new Place;
+
+        $place->name = $request->input('name');
+        $place->description = $request->input('description');
+        $place->image = $request->input('image');
+        $place->address = $request->input('address');
+        $place->phone_number = $request->input('phone_number');
+        $place->email = $request->input('email');
+        $place->popularity = $request->input('popularity');
+        $place->category = $request->input('category');
+
+        $place->save();
+
+        return 'Place record successfully created with id ' . $place->id;
     }
 
     public function getDashboard()

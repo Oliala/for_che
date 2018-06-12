@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @foreach($places as $place)
-
-        <section id="testimornial-area">
+           <section id="testimornial-area">
             <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
@@ -29,11 +27,11 @@
                         <textarea class="form-group" name="body" id="body" rows="5" placeholder="Відгук"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Create Post</button>
+                    <input type="hidden" value="{{$place->id}}" name="place_id">
                     <input type="hidden" value="{{ Session::token() }}" name="_token">
                 </form>
             </div>
         </section>
-    @endforeach
         <section class="row posts">
             <div class="col-md-6 col-md-offset-3">
                 <header><h3>Що інші кажуть про це місце</h3></header>

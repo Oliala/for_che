@@ -46,6 +46,9 @@ Route::get('/places_hotels', 'PlacesController@place_hotels')->name('places_hote
 Route::get('/places_food_drinks', 'PlacesController@place_food_drinks')->name('places_food_drinks');
 Route::get('/places_fun', 'PlacesController@place_fun')->name('places_fun');
 
+Route::get('/places_add',function () {return view('place.place_add');})->name('places_add')->middleware('auth');
+Route::post('/places_add_save', 'PlacesController@postPlaceAdd')->name('places_add_save')->middleware('auth');
+
 Route::get('/place_index/{id?}', 'PlacesController@place_index')->name('place_index');
 Route::get('/dashboard_places','PlacesController@getDashboard')->name('dashboard');
 
@@ -57,5 +60,4 @@ Route::get('/delete-post/{post_id}','PostController@getDeletePost')->name('post.
 
 
 Route::get('/city_map', function () {
-    return view('citymap');
-})->name('city_map');
+    return view('citymap');})->name('city_map');

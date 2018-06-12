@@ -51,6 +51,11 @@
                             <li class="nav-item">
                                 <a class="nav-link " href="{{route('city_map')}}">Карта міста</a>
                             </li>
+                            @if (! empty(Auth::user()->permission) && Auth::user()->permission == 'admin')
+                                <li class="nav-item">
+                                    <a class="nav-link " href="{{route('places_add')}}">Додати місце</a>
+                                </li>
+                            @endif
                     </ul>
                     </ul>
 
