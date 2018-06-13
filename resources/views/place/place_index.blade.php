@@ -9,7 +9,9 @@
                                 <div class="tm-box-description">
                                     <h2>{{ $place->name }}</h2>
                                     <p class="tm-box-p">{{ $place->description }}</p>
-                                    <p class="tm-box-p">{{ $place->popularity }}</p>
+                                    <p class="tm-box-p">{{ $place->address }}</p>
+                                    <p class="tm-box-p">{{ $place->phone_number }}</p>
+                                    <p class="tm-box-p">{{ $place->email }}</p>
                                     {{--<a href="#" class="content-link">Read More</a>--}}
                                 </div>
                             </div>
@@ -17,7 +19,8 @@
                     </div>
                     </div>
                     </section>
-        <section class="row new-post">
+        <section class="testimornial-area">
+            <div class="container">
             <div class="col-md-6 col-md-offset-3">
                 <header><h3>Залиште свій відгук про місце</h3></header>
                 <form action="{{ route('post.create')}}" method="post">
@@ -31,8 +34,10 @@
                     <input type="hidden" value="{{ Session::token() }}" name="_token">
                 </form>
             </div>
+            </div>
         </section>
         <section class="row posts">
+            <div class="container">
             <div class="col-md-6 col-md-offset-3">
                 <header><h3>Що інші кажуть про це місце</h3></header>
                 @foreach($posts as $post)
@@ -52,6 +57,7 @@
                         </div>
                     </article>
                 @endforeach
+            </div>
             </div>
         </section>
 @endsection

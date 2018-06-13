@@ -85,7 +85,7 @@ class PlacesController extends Controller
 
     public function place_seeings()
     {
-        $places=Place::where('category','park')->get();
+        $places=Place::where('category','seeings')->get();
 
         return view('place.place_all', ['places' => $places]);
     }
@@ -98,14 +98,14 @@ class PlacesController extends Controller
     }
     public function place_food_drinks()
     {
-        $places=Place::where('category','restaurant')->get();
+        $places=Place::where('category','food')->get();
 
         return view('place.place_all', ['places' => $places]);
     }
 
     public function place_fun()
     {
-        $places=Place::where('category','park')->get();
+        $places=Place::where('category','fun')->get();
 
         return view('place.place_all', ['places' => $places]);
     }
@@ -131,16 +131,19 @@ class PlacesController extends Controller
 
         $place->name = $request->input('name');
         $place->description = $request->input('description');
-        $place->image = $request->input('image');
         $place->address = $request->input('address');
         $place->phone_number = $request->input('phone_number');
         $place->email = $request->input('email');
         $place->popularity = $request->input('popularity');
         $place->category = $request->input('category');
 
+        $placeImageName = $place->id.'_image'.time().'.'.request()->image->getClientOriginalExtension();
+        $request->image->storeAs('places',$placeImageName);
+        $place->image = $placeImageName;
+
         $place->save();
 
-        return 'Place record successfully created with id ' . $place->id;
+        return back()->with('Place record successfully created with id ' . $place->id);
     }
 
     public function getDashboard()
