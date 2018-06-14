@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DemoMail;
 
+use App\Post;
+use App\Place;
 
 class HomeController extends Controller
 {
@@ -28,9 +30,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $posts= Post::all();
+        $places=Place::all();
 //        $email = Auth::user()->email;
 //        Mail::to($email)->send(new DemoMail());
-        return view('home');
+        return view('home',['posts' => $posts,'places'=>$places]);
     }
 
     public function profile()

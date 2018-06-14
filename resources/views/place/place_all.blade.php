@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div id="section2">
-          <section id="feature-area" class="about-section">
+        <section id="feature-area" class="about-section">
             <div class="container">
                 <div class="row text-center inner">
                     @foreach($places as $place)

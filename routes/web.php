@@ -61,3 +61,6 @@ Route::get('/delete-post/{post_id}','PostController@getDeletePost')->name('post.
 
 Route::get('/city_map', function () {
     return view('citymap');})->name('city_map');
+
+Route::post('/ajax-save-like', 'LikeController@saveLike')->name('ajax.save-like');
+Route::post('/ajax-save-dislike', 'LikeController@saveDislike')->name('ajax.save-dislike');

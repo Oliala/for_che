@@ -10,10 +10,10 @@ class Post extends Model
     {
     return $this->BelongsTo('App\User');
     }
-//    public function place()
-//    {
-//        return $this->BelongsTo('App\Place');
-//    }
+    public function place()
+    {
+        return $this->BelongsTo('App\Place');
+    }
 
     public function likes()
     {

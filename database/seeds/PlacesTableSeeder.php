@@ -166,15 +166,5 @@ WiFi
         ]);
 
 
-        DB::table('places')->insert([
-            'name' => 'Leo hostel',
-            'description' => '',
-            'address' => 'вулиця Толстого,148-152, Чернігів',
-            'image' => 'LeoHostel.jpg',
-            'phone_number'=>'+38(063)790 0069',
-            'email'=>'',
-            'popularity' => '',
-            'category' => 'hotel',
-        ]);
     }
 }

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    @include('message-block');
     <section class="row new-place">
         <div class="col-md-6 col-md-offset-3">
             <header><h3>Додайте нове місце</h3></header>

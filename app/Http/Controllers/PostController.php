@@ -25,7 +25,10 @@ class PostController extends Controller
     {
         $post= new Post();
         $place=new Place();
-
+        $this->validate($request,[
+            'title'=>'required|max:100',
+            'body'=>'required|max:500'
+        ]);
         $post->title = $request['title'];
         $post->body = $request['body'];
         $post->place_id = $request['place_id'];
@@ -41,7 +44,9 @@ class PostController extends Controller
     {
         $post=Post::where('id',$post_id)->first();
         $post->delete();
-        return redirect()->route('place.place_index')->with(['message'=>'Succesfully delete']);
+//        return redirect()->route('place.place_index')->with(['message'=>'Succesfully delete']);
+        return back()->with(['message'=>'Succesfully delete']);
+
     }
 
 }
