@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     @include('message-block');
     <section id="testimornial-area">
@@ -6,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="tm-box">
-                        <img  src="/storage/app/public/places/{{ $place->image }}" class="img-responsive"/>
+                        <img  src="/storage/app/public/places/{{ $place->image }}" height="500" width="400"/>
                         <div class="tm-box-description">
                             <h2>{{ $place->name }}</h2>
                             <p class="tm-box-p">{{ $place->description }}</p>
@@ -30,7 +31,7 @@
                         <br>
                         <textarea class="form-group" name="body" id="body" rows="5" placeholder="Відгук"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Зберігти відгук</button>
+                    <button type="submit" class="btn btn-primary">Зберегти відгук</button>
                     <input type="hidden" value="{{$place->id}}" name="place_id">
                     <input type="hidden" value="{{ Session::token() }}" name="_token">
                 </form>

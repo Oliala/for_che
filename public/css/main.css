@@ -18,6 +18,20 @@ green-text { color: #178A27; }
 .blue-btn:hover { background: #31B0D5; }
 .red-btn { background: #852406; }
 .red-btn:hover { background: #C9302C; }
+
+.tm-box {
+    background-color: #F2F2F2;
+    max-width: 1140px;
+    width: 100%;}
+.tm-box-description {
+    padding: 30px;
+}
+.tm-box-p {
+    margin-bottom: 10px;
+}
+.tm-box-p:last-child {
+    margin-bottom: 0;
+}
 .feature-content {
     background: #F2F2F2;
     padding-bottom: 40px;

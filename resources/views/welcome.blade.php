@@ -13,8 +13,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background-color: #e5ffd8;
+                color: #fff8e4;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
                 height: 100vh;
@@ -52,25 +52,46 @@
             }
 
             .title {
+                text-shadow: 2px 2px 2px white, 0 0 1em red;
                 font-size: 84px;
             }
 
             .links > a {
-                color: #636b6f;
+                color: #fffe2b;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+                text-shadow: 2px 2px 2px black, 0 0 1em white;
             }
 
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            body, html {
+                height: 100%;
+                margin: 0;
+            }
+
+            .bg {
+                /* The image used */
+                background-image: url("/storage/app/public/redSquare.jpg");
+
+                /* Full height */
+                height: 100%;
+
+                /* Center and scale the image nicely */
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
         </style>
     </head>
     <body>
+    <div class="bg">
             <div class="flex-center position-ref full-height">
 
             @if (Route::has('login'))
@@ -87,7 +108,7 @@
             @endif
             <div class="content">
                 <div class="title m-b-md">
-                    Chernihiv-interesting
+                    Чернігів-цікавий
                 </div>
 
                 <div class="links">
@@ -103,6 +124,6 @@
                 </div>
             </div>
         </div>
-
+    </div>
     </body>
 </html>

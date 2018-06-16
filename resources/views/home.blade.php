@@ -35,7 +35,7 @@
                                             posted by {{$post->user->name }} on {{$post->created_at}}
                                         </div>
                                         <div class="interaction">
-                                            <a href="#" class="edit">Редагувати</a>
+
                                         <a href="{{route('post.delete',['post_id'=>$post->id])}}">Delete</a>
                                         </div>
 

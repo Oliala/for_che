@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
     @include('message-block');
+    <section id="testimornial-area">
+        <div class="container">
+            <div class="tm-box">
     <section class="row new-place">
         <div class="col-md-6 col-md-offset-3">
             <header><h3>Додайте нове місце</h3></header>
@@ -27,6 +30,9 @@
                 {{--<input type="hidden" value="{{$place->id}}" name="place_id">--}}
                 <input type="hidden" value="{{ Session::token() }}" name="_token">
             </form>
+        </div>
+    </section>
+            </div>
         </div>
     </section>
 @endsection

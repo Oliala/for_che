@@ -11,10 +11,19 @@
         bottom: 0;
         width: 100%;
     }
+
 </style>
 
     <div id='map' ></div>
     {{--$('#map-div').show();--}}
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.1/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.1/mapbox-gl-geocoder.css' type='text/css' />
+<style>
+    #geocoder-container > div {
+        min-width:50%;
+        margin-left:25%;
+    }
+</style>
 
     <script>
 
@@ -32,38 +41,45 @@
             center: [31.297,51.493], // starting position [lng, lat]
             zoom: 14 // starting zoom
         });
+        var geocoder = new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            country: 'ua'
+        });
+
+        map.addControl(geocoder);
+
+        // After the map style has loaded on the page, add a source layer and default
+        // styling for a single point.
+        map.on('load', function() {
+            map.addSource('single-point', {
+                "type": "geojson",
+                "data": {
+                    "type": "FeatureCollection",
+                    "features": []
+                }
+            });
+
+            map.addLayer({
+                "id": "point",
+                "source": "single-point",
+                "type": "circle",
+                "paint": {
+                    "circle-radius": 10,
+                    "circle-color": "#007cbf"
+                }
+            });
+
+            // Listen for the `geocoder.input` event that is triggered when a user
+            // makes a selection and add a symbol that matches the result.
+            geocoder.on('result', function(ev) {
+                map.getSource('single-point').setData(ev.result.geometry);
+            });
+        });
+
         map.on('load', function () {
             // Add a layer showing the places.
             map.addLayer({
-                "id": "places",
-                "type": "symbol",
-                "source": {
-                    "type": "geojson",
-                    "data": {
-                        "type": "FeatureCollection",
-                        "features": [{
-                            "type": "Feature",
-                            "properties": {
-                                "description": "<strong>Make it Mount Pleasant</strong><p><a href=\"http://www.mtpleasantdc.com/makeitmtpleasant\" target=\"_blank\" title=\"Opens in a new window\">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>",
-                                "icon": "theatre"
-                            },
-                            "geometry": {
-                                "type": "Point",
-                                "coordinates": [31.297,51.493]
-                            }
-                        }, {
-                            "type": "Feature",
-                            "properties": {
-                                "description": "<strong>Truckeroo</strong><p><a href=\"http://www.truckeroodc.com/www/\" target=\"_blank\">Truckeroo</a> brings dozens of food trucks, live music, and games to half and M Street SE (across from Navy Yard Metro Station) today from 11:00 a.m. to 11:00 p.m.</p>",
-                                "icon": "music"
-                            },
-                            "geometry": {
-                                "type": "Point",
-                                "coordinates": [31.297,62.493]
-                            }
-                        }]
-                    }
-                },
+//
                 "layout": {
                     "icon-image": "{icon}-15",
                     "icon-allow-overlap": true
@@ -116,7 +132,7 @@
 
             var popup = new mapboxgl.Popup({ offset: [0, -15] })
                 .setLngLat(feature.geometry.coordinates)
-                .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
+                .setHTML('<h3>' + feature.properties.place_name + '</h3>')
                 .setLngLat(feature.geometry.coordinates)
                 .addTo(map);
         });
